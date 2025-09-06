@@ -37,5 +37,14 @@ public class DriveTrainSubsystem extends SubsystemBase{
     public void periodic() {
         robotDrive.feed();
     }
+    //Converting from rotations -> CM
+    public double getEncoderValueAsMeters(){
+        double value = (leftCan.getPosition().getValueAsDouble() + rightCan.getPosition().getValueAsDouble())/2.0;
+        return value * 47.877872/100;
+    }
+    public void resetCanCoderValue(){
+        leftCan.setPosition(0);
+        rightCan.setPosition(0);
+    }
 
 }
