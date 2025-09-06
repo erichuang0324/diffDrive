@@ -1,5 +1,6 @@
 package frc.robot.Subsystem;
 
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.ctre.phoenix6.hardware.CANcoder;
@@ -18,7 +19,6 @@ public class DriveTrainSubsystem extends SubsystemBase{
     CANcoder leftCan = new CANcoder(11);
     
     DifferentialDrive robotDrive = new DifferentialDrive(frontLeft, frontRight);
-    
 
     public DriveTrainSubsystem(){
         backLeft.setInverted(false);
@@ -26,6 +26,11 @@ public class DriveTrainSubsystem extends SubsystemBase{
         
         frontRight.setInverted(true);
         backRight.setInverted(true);
+
+        backLeft.setNeutralMode(NeutralMode.Brake);
+        frontLeft.setNeutralMode(NeutralMode.Brake);
+        backRight.setNeutralMode(NeutralMode.Brake);
+        frontRight.setNeutralMode(NeutralMode.Brake);
 
         backLeft.follow(frontLeft);
         backRight.follow(frontRight);
