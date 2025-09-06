@@ -9,6 +9,7 @@ public class TeleDCommand extends Command{
     public TeleDCommand(DriveTrainSubsystem subsystem, CommandXboxController controller){
         this.subsystem = subsystem;
         this.controller = controller;
+        addRequirements(subsystem);
     }
     @Override
     public void initialize() {

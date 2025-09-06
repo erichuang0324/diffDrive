@@ -21,11 +21,11 @@ public class DriveTrainSubsystem extends SubsystemBase{
     
 
     public DriveTrainSubsystem(){
-        backLeft.setInverted(true);
-        frontLeft.setInverted(true);
+        backLeft.setInverted(false);
+        frontLeft.setInverted(false);
         
-        frontRight.setInverted(false);
-        backRight.setInverted(false);
+        frontRight.setInverted(true);
+        backRight.setInverted(true);
 
         backLeft.follow(frontLeft);
         backRight.follow(frontRight);
@@ -35,8 +35,7 @@ public class DriveTrainSubsystem extends SubsystemBase{
     }
     @Override
     public void periodic() {
-        // TODO Auto-generated method stub
-        super.periodic();
+        robotDrive.feed();
     }
 
 }
